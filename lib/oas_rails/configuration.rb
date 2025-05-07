@@ -13,6 +13,7 @@ module OasRails
                   :possible_default_responses,
                   :http_verbs,
                   :use_model_names,
+                  :wrap_request_body_with_model_name,
                   :rapidoc_theme
 
     attr_reader :servers, :tags, :security_schema, :include_mode, :response_body_of_default
@@ -22,7 +23,7 @@ module OasRails
       @layout = false
       @servers = default_servers
       @tags = []
-      @swagger_version = '3.1.0'
+      @swagger_version = '3.0.4'
       @default_tags_from = :namespace
       @autodiscover_request_body = true
       @autodiscover_responses = true
@@ -36,6 +37,7 @@ module OasRails
       @http_verbs = [:get, :post, :put, :patch, :delete]
       @response_body_of_default = "Hash{ status: !Integer, error: String }"
       @use_model_names = false
+      @wrap_request_body_with_model_name = true
       @rapidoc_theme = :rails
       @include_mode = :all
 

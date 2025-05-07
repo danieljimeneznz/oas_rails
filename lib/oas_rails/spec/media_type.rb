@@ -54,7 +54,8 @@ module OasRails
             @factory_examples[klass_sym] = FactoryBot.build_stubbed_list(klass_sym, 1) if @factory_examples[klass_sym].nil?
 
             @factory_examples[klass_sym].each_with_index.to_h do |obj, index|
-              ["#{klass_sym}#{index + 1}", { value: { klass_sym => clean_example_object(obj: obj.as_json) } }]
+              value = OasRails.config.wrap_request_body_with_model_name ? { klass_sym => clean_example_object(obj: obj.as_json) } : clean_example_object(obj: obj.as_json)
+              ["#{klass_sym}#{index + 1}", { value: value }]
             end
           rescue KeyError
             {}
