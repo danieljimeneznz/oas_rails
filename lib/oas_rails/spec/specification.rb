@@ -13,7 +13,7 @@ module OasRails
 
         @components = Components.new(self)
         @info = OasRails.config.info
-        @openapi = '3.1.0'
+        @openapi = '3.0.4'
         @servers = OasRails.config.servers
         @tags = OasRails.config.tags
         @external_docs = {}
